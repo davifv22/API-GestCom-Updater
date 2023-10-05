@@ -8,7 +8,7 @@ class LoginSchema(ma.SQLAlchemyAutoSchema):
         load_instance = True
         fields = ('id', 'user', 'nome', 'email', 'senha')
 
-    user = fields.String(required=False)
+    user = fields.String(required=True)
     nome = fields.String(required=False)
-    email = fields.String(required=True)
+    email = fields.String(required=False)
     senha = fields.String(required=True)
