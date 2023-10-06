@@ -1,13 +1,12 @@
 
 
 class Versao():
-    def __init__(self, tipo_sistema, versao, release, dt_upload, link_download, responsaveis):
+    def __init__(self, tipo_sistema, versao, release, dt_upload, link_download):
         self.__tipo_sistema = tipo_sistema
         self.__versao = versao
         self.__release = release
         self.__dt_upload = dt_upload
         self.__link_download = link_download
-        self.responsaveis = responsaveis
 
 
     @property
@@ -49,11 +48,3 @@ class Versao():
     @link_download.setter
     def link_download(self, link_download):
         self.__link_download = link_download
-
-    @property
-    def responsaveis(self):
-        return self.__responsaveis
-
-    @responsaveis.setter
-    def responsaveis(self, responsaveis):
-        self.__responsaveis = responsaveis

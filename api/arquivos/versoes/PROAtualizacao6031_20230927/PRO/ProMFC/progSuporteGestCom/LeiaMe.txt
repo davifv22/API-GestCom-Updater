@@ -1,0 +1,3 @@
+Programa em C# em .NET 4.0 utilizado para criação de funcionalidades
+que necessitem de uma tecnoliga mais recente, fazendo a chamada do .exe passando por 
+parâmetro a função e os dados pertinentes a execução do mesmo.
