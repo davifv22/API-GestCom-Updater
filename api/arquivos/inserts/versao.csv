@@ -1,6 +1,6 @@
-tipo_sistema,versao,release,dt_upload,link_download
-MGF,6031,0510,2023-10-05,a
-MGF,7008,0710,2023-10-08,a
-PRO,6031,0110,2023-10-03,a
-PRO,7008,0410,2023-10-05,a
-RECEBIME,1001,0510,2023-10-05,a
+tipo_sistema,versao,release,link_download,nome_arquivo,dt_upload
+MGF6031,6031,0210,http://api-gestcom-updater.up.railway.app/versao/download/MGF6031,MGFAtualizacao6031_20231002.rar,2023-10-02
+MGF7008,7008,2109,http://api-gestcom-updater.up.railway.app/versao/download/MGF7008,MGFAtualizacao7008_20230921.rar,2023-09-21
+PRO6031,6031,2709,http://api-gestcom-updater.up.railway.app/versao/download/PRO6031,PROAtualizacao6031_20230927.rar,2023-09-27
+PRO7008,7008,0510,http://api-gestcom-updater.up.railway.app/versao/download/PRO7008,PROAtualizacao7008_20231005.rar,2023-10-05
+REC1001,1001,0510,http://api-gestcom-updater.up.railway.app/versao/download/REC1001,RECAtualizacao1001_20231005.rar,2023-10-05

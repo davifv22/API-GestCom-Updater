@@ -1,0 +1,9 @@
+id,autarquia,nome_orgao_resp,cidade,uf,ident_empresa,situacao,tipo_sistema_id
+2,SAAE,"SAAE de Passos",Passos,MG,0125,0,MGF7008
+3,SAAE,"SAAE de Itau de Minas","Itau de Minas",MG,0126,0,MGF6031
+4,SAAE,"SAAE de Sete Lagoas","Sete Lagoas",MG,0128,0,MGF7008
+5,SAAE,"SAAE de Bocaiuva",Bocaiuva,MG,0129,0,MGF6031
+6,SAAE,"SAAE de Iguatama",Iguatama,MG,0130,0,MGF6031
+7,"Prefeitura de SP","Saneamento de Pindorama",Pindorama,SP,0131,0,PRO6031
+8,"Prefeitura de SP","Saneamento de Conchal",Conchal,SP,0132,0,PRO7008
+9,"Prefeitura de SP","Saneamento de Barrinha",Barrinha,SP,0133,0,PRO7008

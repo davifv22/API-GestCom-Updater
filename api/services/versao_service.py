@@ -61,7 +61,7 @@ def set_versao_pacotes(vTipo, params):
         dir_temp = app.config.get('DIR_VERSAO_TEMP') # diretorio versao temp
         versao_arq = versao_base.nome_arquivo # nome versao base        
         pasta_temp = f'{vTipo}_{cidade}_{datetime.datetime.now().strftime("%Y%m%d%H%M")}' # criar nome da pasta
-        os.mkdir(f'{dir_temp}\\{pasta_temp}') # criar a pasta temp no diretorio
+        os.mkdir(f'{dir_temp}/{pasta_temp}') # criar a pasta temp no diretorio
         
         arqs = []
         if vTipo[:3] == 'MGF':
@@ -85,20 +85,20 @@ def set_versao_pacotes(vTipo, params):
         if rpts[0]["requerimento"]: arqs.append('requerimentosdiversos.rpt')
 
 
-        with rarfile.RarFile(f'{dir}\\{versao_arq}', "r") as rar: # Abre e extrai a versão base
+        with rarfile.RarFile(f'{dir}/{versao_arq}', "r") as rar: # Abre e extrai a versão base
             for file in arqs:
-                with open(os.path.join(f'{dir_temp}\\{pasta_temp}', file), "w") as f: # abre pasta personalizada
+                with open(os.path.join(f'{dir_temp}/{pasta_temp}', file), "w") as f: # abre pasta personalizada
                     f.write(file) # extrai arquivos necessarios
                     f.close()
 
-        with zipfile.ZipFile(f'{dir_temp}\\{pasta_temp}.zip', 'w', zipfile.ZIP_DEFLATED) as zip:
-            for root, dirs, files in os.walk(f'{dir_temp}\\{pasta_temp}'):
+        with zipfile.ZipFile(f'{dir_temp}/{pasta_temp}.zip', 'w', zipfile.ZIP_DEFLATED) as zip:
+            for root, dirs, files in os.walk(f'{dir_temp}/{pasta_temp}'):
                 for file in files:
                     file_path = os.path.join(root, file)
-                    arcname = os.path.relpath(file_path, f'{dir_temp}\\{pasta_temp}')
+                    arcname = os.path.relpath(file_path, f'{dir_temp}/{pasta_temp}')
                     zip.write(file_path, arcname=arcname)
 
-        shutil.rmtree(f'{dir_temp}\\{pasta_temp}') # Exclui a pasta temp
+        shutil.rmtree(f'{dir_temp}/{pasta_temp}') # Exclui a pasta temp
         
         # adicionar no banco de dados
         versao_pacote_bd = versao_pacotes_model.VersaoPacotes(

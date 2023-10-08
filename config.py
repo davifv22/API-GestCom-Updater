@@ -18,5 +18,5 @@ else:
 SQLALCHEMY_TRACK_MODIFICATIONS = True
 SECRET_KEY = 'aplicacao_flask'
 
-DIR_VERSAO = 'api\\arquivos\\versoes'
-DIR_VERSAO_TEMP = 'api\\arquivos\\versoes\\temp'
+DIR_VERSAO = 'api/arquivos/versoes'
+DIR_VERSAO_TEMP = 'api/arquivos/versoes/temp'
