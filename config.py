@@ -1,8 +1,7 @@
-# DB LOCAL:
-# DEBUG = True
-DEBUG = False
+# SERVER_URL= 'http://localhost:5000'
+SERVER_URL = 'http://api-gestcom-updater.up.railway.app'
 
-if DEBUG:
+if SERVER_URL == 'http://localhost:5000':
     USERNAME = 'root'
     PASSWORD = '12345'
     SERVER = 'localhost'
@@ -18,3 +17,6 @@ else:
 
 SQLALCHEMY_TRACK_MODIFICATIONS = True
 SECRET_KEY = 'aplicacao_flask'
+
+DIR_VERSAO = 'api\\arquivos\\versoes'
+DIR_VERSAO_TEMP = 'api\\arquivos\\versoes\\temp'

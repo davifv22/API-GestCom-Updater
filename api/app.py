@@ -14,5 +14,5 @@ migrate = Migrate(app, db)
 api = Api(app)
 jwt = JWTManager(app)
 
-from .views import clientes_views, token_views, versao_views, responsavel_views, user_views, refresh_token_views
-from .models import clientes_model, versao_model, responsavel_model, user_model
+from .views import clientes_views, token_views, versao_views, user_views, refresh_token_views
+from .models import clientes_model, versao_model, user_model, versao_pacotes_model

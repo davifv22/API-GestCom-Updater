@@ -8,8 +8,9 @@ class User(db.Model):
     nome = db.Column(db.String(50), nullable=False) # Fulano de Ciclano
     email = db.Column(db.String(100), nullable=False) # user@mail.com
     senha = db.Column(db.String(255), nullable=False) # criptografada
-    is_admin = db.Column(db.Boolean, default=False)
-    api_key = db.Column(db.String(100), nullable=True)
+    situacao = db.Column(db.Boolean, default=True, nullable=False)
+    is_admin = db.Column(db.Boolean, default=False, nullable=False)
+    api_key = db.Column(db.String(100), nullable=False)
 
     def encriptar_senha(self):
         self.senha = pbkdf2_sha256.hash(self.senha)

@@ -1,11 +1,12 @@
 
 
 class User():
-    def __init__(self, user, nome, email, senha, is_admin, api_key):
+    def __init__(self, user, nome, email, senha, situacao, is_admin, api_key):
         self.__user = user
         self.__nome = nome
         self.__email = email
         self.__senha = senha
+        self.__situacao = situacao
         self.__is_admin = is_admin
         self.__api_key = api_key
 
@@ -40,6 +41,14 @@ class User():
     @senha.setter
     def senha(self, senha):
         self.__senha = senha
+
+    @property
+    def situacao(self):
+        return self.__situacao
+
+    @situacao.setter
+    def situacao(self, situacao):
+        self.__situacao = situacao
 
     @property
     def is_admin(self):

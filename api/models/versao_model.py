@@ -14,5 +14,6 @@ class Versao(db.Model):
     versao = db.Column(db.String(50), primary_key=True, nullable=False) # 7.0.08
     release = db.Column(db.String(50), primary_key=True, nullable=False) # 2709
     dt_upload = db.Column(db.Date, nullable=False) # 01/01/2023
-    link_download = db.Column(db.String(100)) # # URL_API/versao/download/MGFAtualização_7008.rar
+    nome_arquivo = db.Column(db.String(31), nullable=False)
+    link_download = db.Column(db.String(100), nullable=False) # # URL_API/versao/download/MGFAtualização_7008.rar
     # responsaveis = db.relationship(Responsavel, secondary='resp_versao', back_populates='versoes')

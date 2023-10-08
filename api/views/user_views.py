@@ -4,7 +4,6 @@ from flask import request, make_response, jsonify
 from ..schemas import user_schema
 from ..entidades import user
 from ..services import user_service
-from ..decorator import admin_required
 import uuid
 
 
@@ -19,10 +18,11 @@ class UserList(Resource):
             nome = request.json['nome']
             email = request.json['email']
             senha = request.json['senha']
+            situacao = True
             is_admin = request.json['is_admin']
             api_key = str(uuid.uuid4())
             
-            novo_user = user.User(user=user_, nome=nome, email=email, senha=senha, is_admin=is_admin, api_key=api_key)
+            novo_user = user.User(user=user_, nome=nome, email=email, senha=senha, situacao=situacao, is_admin=is_admin, api_key=api_key)
             x = user_service.set_user(novo_user)
             
             return make_response(us.jsonify(x), 201)

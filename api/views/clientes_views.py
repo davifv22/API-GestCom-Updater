@@ -6,12 +6,11 @@ from ..entidades import clientes
 from ..services import clientes_service, versao_service
 from ..paginate import paginate
 from ..models import clientes_model
-from flask_jwt_extended import jwt_required # Implementar após os testes para access token
 from ..decorator import admin_required, api_key_required # Implementar após os testes para access token
 
 
 class ClientesList(Resource):
-    # @api_key_required
+    @api_key_required
     def get(self):
         cs = clientes_schema.ClientesSchema(many=True)
         return paginate(clientes_model.Clientes, cs)
@@ -39,7 +38,7 @@ class ClientesList(Resource):
 
 
 class ClienteDetail(Resource):
-    # @api_key_required
+    @api_key_required
     def get(self, id):
         cliente_bd = clientes_service.get_cliente(id)
         if cliente_bd is None:
@@ -47,7 +46,7 @@ class ClienteDetail(Resource):
         cs = clientes_schema.ClientesSchema()
         return make_response(cs.jsonify(cliente_bd), 200)
 
-    @admin_required
+    @api_key_required
     def put(self, id):
         cliente_bd = clientes_service.get_cliente(id)
         if cliente_bd is None:
@@ -72,7 +71,7 @@ class ClienteDetail(Resource):
             cliente_atualizado = clientes_service.get_cliente(id)
             return make_response(cs.jsonify(cliente_atualizado), 200)
 
-    @admin_required
+    @api_key_required
     def delete(self, id):
         cliente_bd = clientes_service.get_cliente(id)
         if cliente_bd is None:

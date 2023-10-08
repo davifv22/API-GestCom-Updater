@@ -2,7 +2,7 @@ from ..models import user_model
 from api.app import db
 
 def set_user(user):
-    user_bd = user_model.User(user=user.user, nome=user.nome, email=user.email, senha=user.senha, is_admin=user.is_admin, api_key=user.api_key)
+    user_bd = user_model.User(user=user.user, nome=user.nome, email=user.email, senha=user.senha, situacao=user.situacao, is_admin=user.is_admin, api_key=user.api_key)
     user_bd.encriptar_senha()
     db.session.add(user_bd)
     db.session.commit()

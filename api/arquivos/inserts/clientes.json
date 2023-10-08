@@ -1,0 +1,75 @@
+[
+	{
+	"autarquia": "SAAE",
+	"nome_orgao_resp": "SAAE de Passos",
+	"cidade": "Passos",
+	"uf": "MG",
+	"ident_empresa": "0125",
+	"tipo_sistema_id": "MGF7008"
+	},
+  {
+		"autarquia": "SAAE",
+		"nome_orgao_resp": "SAAE de Itau de Minas",
+		"cidade": "Itau de Minas",
+		"uf": "MG",
+		"ident_empresa": "0126",
+		"tipo_sistema_id": "MGF6031"
+  },
+	{
+		"autarquia": "SAAE",
+		"nome_orgao_resp": "SAAE de Itauna",
+		"cidade": "Itauna",
+		"uf": "MG",
+		"ident_empresa": "0127",
+		"tipo_sistema_id": "MGF6031"
+	},
+ 	{
+		"autarquia": "SAAE",
+		"nome_orgao_resp": "SAAE de Sete Lagoas",
+		"cidade": "Sete Lagoas",
+		"uf": "MG",
+		"ident_empresa": "0128",
+		"tipo_sistema_id": "MGF7008"
+	},
+	{
+		"autarquia": "SAAE",
+		"nome_orgao_resp": "SAAE de Bocaiuva",
+		"cidade": "Bocaiuva",
+		"uf": "MG",
+		"ident_empresa": "0129",
+		"tipo_sistema_id": "MGF6031"
+	},
+	{
+		"autarquia": "SAAE",
+		"nome_orgao_resp": "SAAE de Iguatama",
+		"cidade": "Iguatama",
+		"uf": "MG",
+		"ident_empresa": "0130",
+		"tipo_sistema_id": "MGF6031"
+	},
+ 	{
+		"autarquia": "Prefeitura de SP",
+		"nome_orgao_resp": "Saneamento de Pindorama",
+		"cidade": "Pindorama",
+		"uf": "SP",
+		"ident_empresa": "0131",
+		"tipo_sistema_id": "PRO6031"
+ 	},
+	{
+
+		"autarquia": "Prefeitura de SP",
+		"nome_orgao_resp": "Saneamento de Conchal",
+		"cidade": "Conchal",
+		"uf": "SP",
+		"ident_empresa": "0132",
+		"tipo_sistema_id": "PRO7008"
+	},
+	{
+		"autarquia": "Prefeitura de SP",
+		"nome_orgao_resp": "Saneamento de Barrinha",
+		"cidade": "Barrinha",
+		"uf": "SP",
+		"ident_empresa": "0133",
+		"tipo_sistema_id": "PRO7008"
+	}
+]
