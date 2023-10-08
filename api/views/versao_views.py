@@ -58,9 +58,9 @@ class VersaoDownload(Resource):
             return make_response(jsonify(versao_bd[1]), 404)
         
         if params[-4:] == '.zip':
-            versao_folder = './arquivos/versoes/temp'
+            versao_folder = 'arquivos/versoes/temp'
         else:
-            versao_folder = './arquivos/versoes'
+            versao_folder = 'arquivos/versoes'
         file = os.path.join(versao_folder, versao_bd[1].nome_arquivo)
         return send_file(file, as_attachment=True)
 
