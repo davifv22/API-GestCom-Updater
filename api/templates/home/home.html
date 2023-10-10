@@ -1,0 +1,32 @@
+{% extends 'layout_home.html' %} {% block content_home %}
+
+
+<main>
+    <nav class="navbar font-monospace text-uppercase bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand text-light" href="#">API GestCom updater</a>
+            <ul class="nav justify-content-end">
+                <li class="nav-item"><a class="nav-link text-light" href="">Home</a></li>
+                <li class="nav-item"><a class="nav-link text-light" href="">Quem somos</a></li>
+            </ul>
+        </div>
+    </nav>
+    <img src="/static/img/background.png" alt="logo" class="figure-img" id="background">
+    <section class="container-fluid position-absolute top-50 end-0 translate-middle-y" id="login">
+        <form action="{{url_for('login')}}" method="post" class="bg-dark shadow text-center text-uppercase font-monospace rounded">
+            <figure class="figure">
+                <img src="/static/img/logo.png" alt="logo" class="figure-img img-fluid rounded">
+            </figure>
+            <br>
+            <label for="user" class="form-label">USUÁRIO</label>
+            <input type="text" class="form-control form-control-sm mb-2" id="user" name="user">
+            <label for="senha" class="form-label ">SENHA</label>
+            <input type="password" class="form-control form-control-sm mb-2" id="senha" name="senha">
+            <hr>
+            <i class="text-danger">{{message_login}}</i>
+            <a href="" class="nav-link mb-2"><u>RECUPERAR SENHA</u></a>
+            <button type="submit" class="btn btn-success">ENTRAR</button>
+        </form>
+    </section>
+</main>
+{% endblock %}

@@ -1,7 +1,8 @@
 from api.app import db
 from passlib.hash import pbkdf2_sha256
+from flask_login import UserMixin
 
-class User(db.Model):
+class User(db.Model, UserMixin):
     __tablename__ = 'user'
     id = db.Column(db.Integer, primary_key=True, nullable=False)
     user = db.Column(db.String(25), nullable=False)
@@ -17,3 +18,6 @@ class User(db.Model):
         
     def ver_senha(self, senha):
         return pbkdf2_sha256.verify(senha, self.senha)
+
+    def get(user):
+        return User.query.get(user)
