@@ -1,1 +1,10 @@
-<a href="{{url_for('logout')}}">sair</a>
+{% extends 'layout_cpanel.html' %} {% block content_cpanel %}
+<section class="text-bg-dark bg-body-tertiary rounded-3 p-2 m-1 w-100 shadow-sm">
+    <h3>Dashboard</h3>
+    <hr>
+    <div class="d-flex flex-column align-items-stretch">
+        <div class="d-flex align-items-center">{{ chart_clientes|safe }} {{ chart_clientes_|safe }}</div>
+        <div>{{ chart_versao|safe }}</div>
+    </div>
+</section>
+{% endblock %}

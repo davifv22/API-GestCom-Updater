@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="icon" href="/static/img/icon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/static/css/cpanel.css">
+    <title>API GestCom Updater</title>
+</head>
+
+<body class="bg-dark text-light">
+    <nav class="navbar sidebar text-bg-dark bg-body-tertiary text-center m-1 rounded-3 shadow-sm font-monospace text-uppercase">
+        <div class="container-fluid w-100">
+            <a class="navbar-brand d-flex align-items-center">
+                <img src="/static/img/icon.ico" alt="Logo" width="35" class="d-inline-block align-text-top me-2"> API GestCom Updater
+            </a>
+            <div class="dropdown me-1">
+                <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="https://github.com/mdo.png" alt="" width="32" class="rounded-circle me-2">
+                    <strong>Davi Viana</strong>
+                </a>
+                <ul class="dropdown-menu text-small shadow">
+                    <li><a class="dropdown-item" href="#">Meu Perfil</a></li>
+                    <li><a class="dropdown-item" href="#">Configurações</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="{{url_for('logout')}}">Sair</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main class="d-flex flex-nowrap font-monospace">
+        <div class="d-flex flex-column text-primary-emphasis bg-body-tertiary rounded-3 m-1 shadow-sm" id="sidebar-menu">
+            <ul class="navbar-nav">
+                <li class="p-2 nav-item">
+                    <a class="nav-link" href="/"><i class="bi bi-graph-up-arrow"> </i> <span> Dashboard</span></a>
+                </li>
+                <li class="p-2 nav-item">
+                    <a class="nav-link" href="/clientes"><i class="bi bi-person-lines-fill"> </i> <span> Clientes</span></a>
+                </li>
+                <li class="p-2 nav-item">
+                    <a class="nav-link" href="/versoes"><i class="bi bi-database-fill-gear"> </i> <span> Pacotes Versões </span></a>
+                </li>
+                <li class="p-2 nav-item">
+                    <a class="nav-link" href="/usuarios"><i class="bi bi-people-fill"> </i> <span> Usuários</span></a>
+                </li>
+                <li class="p-2 nav-item">
+                    <a class="nav-link" href="/config"><i class="bi bi-gear-fill"> </i> <span> Configuração</span></a>
+                </li>
+            </ul>
+        </div>
+        {% block content_cpanel %} {% endblock %}
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+
+</html>

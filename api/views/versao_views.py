@@ -1,6 +1,7 @@
 from flask_restful import Resource
 from api.app import api
-from flask import request, make_response, jsonify, send_file
+from flask import request, make_response, jsonify, send_file, render_template
+from flask_login import login_required
 from ..schemas import versao_schema, vdownload_schema
 from ..services import versao_service
 from ..decorator import admin_required, api_key_required
@@ -8,11 +9,11 @@ import os
 
 
 class VersaoList(Resource):
-    @api_key_required
+    @login_required
     def get(self):
-        vs = versao_schema.VersaoSchema(many=True)
-        versao_bd = versao_service.get_versao()
-        return make_response(vs.jsonify(versao_bd), 200)
+        response = make_response(render_template("cPanel/pacotes_versoes.html"))
+        response.mimetype = "text/html"
+        return response
 
 
 class VersaoDetail(Resource):

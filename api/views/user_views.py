@@ -1,13 +1,21 @@
 from flask_restful import Resource
 from api.app import api
-from flask import request, make_response, jsonify
+from flask import request, make_response, jsonify, render_template, Blueprint
+from flask_login import login_required
 from ..schemas import user_schema
 from ..entidades import user
 from ..services import user_service
 import uuid
 
+bp = Blueprint('usuarios', __name__)
 
 class UserList(Resource):
+    @login_required
+    def get(self):
+        response = make_response(render_template("cPanel/usuarios.html"))
+        response.mimetype = "text/html"
+        return response
+    
     def post(self):
         us = user_schema.UserSchema()
         v = us.validate(request.json)
@@ -28,4 +36,4 @@ class UserList(Resource):
             return make_response(us.jsonify(x), 201)
 
 
-api.add_resource(UserList, '/user')
+api.add_resource(UserList, '/usuarios')

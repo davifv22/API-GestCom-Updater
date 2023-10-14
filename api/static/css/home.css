@@ -1,21 +1,11 @@
-nav {
-    position: absolute;
-}
-
-main {
-    background-color: #fff;
-    width: 100%;
-    height: 100%;
+main #background {
+    width: 100rem;
+    pointer-events: none;
     position: fixed;
 }
 
-main #background {
-    width: 100%;
-    pointer-events: none;
-}
-
 #login {
-    width: 25rem;
+    width: 25em;
     margin-right: 3%;
 }
 
@@ -25,4 +15,10 @@ main #background {
 
 #login form {
     padding: 5% 15%;
+}
+
+@media screen and (max-width: 420px) {
+    #login form {
+        margin-left: 3rem;
+    }
 }
