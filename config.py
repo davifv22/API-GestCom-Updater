@@ -1,5 +1,5 @@
-SERVER_URL= 'http://localhost:5000'
-# SERVER_URL = 'http://api-gestcom-updater.up.railway.app'
+#SERVER_URL= 'http://localhost:5000'
+SERVER_URL = 'http://api-gestcom-updater.up.railway.app'
 
 if SERVER_URL == 'http://localhost:5000':
     USERNAME = 'root'
