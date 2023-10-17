@@ -2,5 +2,117 @@
 <section class="text-bg-dark bg-body-tertiary rounded-3 p-2 m-1 w-100 shadow-sm">
     <h3>Clientes</h3>
     <hr>
+    <div class="d-flex justify-content-center flex-wrap">
+        <div class="input-group w-50 mb-3">
+            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">Buscar</button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Sistema</a></li>
+                <li><a class="dropdown-item" href="#">Cidade</a></li>
+                <li><a class="dropdown-item" href="#">Situação</a></li>
+            </ul>
+            <input type="text" class="form-control">
+        </div>
+    </div>
+    <button type="button" class="btn btn-success m-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        <i class="bi bi-person-plus-fill"></i> Novo Cliente
+      </button>
+    <br>
+    <div class="table-responsive">
+        <table class="table table-hover text-center">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Autarquia</th>
+                    <th scope="col">Órgão Responsável</th>
+                    <th scope="col">Cidade</th>
+                    <th scope="col">Ident. Emp.</th>
+                    <th scope="col">Situação</th>
+                    <th scope="col">Tipo Sistema</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider border-primary">
+                {% for cliente in clientes %}
+                <tr>
+                    <th scope="row">{{ cliente.id }}</th>
+                    <td>{{ cliente.autarquia }}</td>
+                    <td>{{ cliente.nome_orgao_resp }}</td>
+                    <td>{{ cliente.cidade }} - {{ cliente.uf }}</td>
+                    <td>{{ cliente.ident_empresa }}</td>
+                    {% if cliente.situacao == 0 %}
+                    <td>ATIVO</td>
+                    {% else %}
+                    <td>SUSPENSO</td>
+                    {% endif %}
+                    <td>{{ cliente.tipo_sistema_id }}</td>
+                    <td>
+                        <a href="" title="Detalhar" class="btn btn-success btn-sm"><i class="bi bi-search"></i></a>
+                        <a href="" title="Editar" class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i></a>
+                        <a href="{{url_for('delete', id=cliente.id)}}" title="Excluir" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </section>
+
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Cadastro Cliente</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{{url_for('clienteslist')}}" method="post" class="row g-3">
+                    <div class="col-md-12">
+                        <label for="autarquia" class="form-label">Autarquia</label>
+                        <input type="text" class="form-control" name="autarquia" id="autarquia">
+                    </div>
+                    <div class="col-md-12">
+                        <label for="nome_orgao_resp" class="form-label">Órgão Responsável</label>
+                        <input type="text" class="form-control" name="nome_orgao_resp" id="nome_orgao_resp">
+                    </div>
+                    <div class="col-6">
+                        <label for="cidade" class="form-label">Cidade</label>
+                        <input type="text" class="form-control" name="cidade" id="cidade">
+                    </div>
+                    <div class="col-2">
+                        <label for="uf" class="form-label">UF</label>
+                        <input type="text" maxlength="2" class="form-control" name="uf" id="uf">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="ident_empresa" class="form-label">Ident. Empresa</label>
+                        <input type="number" class="form-control" name="ident_empresa" id="ident_empresa">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="situacao" class="form-label">Situação</label>
+                        <select id="situacao" name="situacao" class="form-select">
+                        <option></option>
+                        <option value="0">Ativo</option>
+                        <option value="1">Suspenso</option>
+                      </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="tipo_sistema_id" class="form-label">Tipo Sistema</label>
+                        <select id="tipo_sistema_id" name="tipo_sistema_id" class="form-select">
+                        <option></option>
+                        <option value="MGF6031">MGF6031</option>
+                        <option value="MGF7008">MGF7008</option>
+                        <option value="PRO6031">PRO6031</option>
+                        <option value="PRO7008">PRO7008</option>
+                        <option value="REC1001">REC1001</option>
+                      </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                        <button type="submit" class="btn btn-success">Inserir</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

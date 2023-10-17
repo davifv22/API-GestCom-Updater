@@ -2,4 +2,135 @@
 <section class="text-bg-dark bg-body-tertiary rounded-3 p-2 m-1 w-100 shadow-sm">
     <h3>Pacotes de Versões</h3>
     <hr>
-</section> {% endblock %}
+    <div class="d-flex justify-content-center flex-wrap">
+        <div class="input-group w-50 mb-3">
+            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">Buscar</button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Sistema</a></li>
+                <li><a class="dropdown-item" href="#">Cidade</a></li>
+                <li><a class="dropdown-item" href="#">Situação</a></li>
+            </ul>
+            <input type="text" class="form-control">
+        </div>
+    </div>
+    <button type="button" class="btn btn-success m-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        <i class="bi bi-database-fill-add"></i> Novo Pacote
+      </button>
+    <br>
+    <div class="table-responsive">
+        <table class="table table-hover text-center">
+            <thead>
+                <tr>
+                    <th scope="col">Sistema</th>
+                    <th scope="col">Versão</th>
+                    <th scope="col">Release</th>
+                    <th scope="col">Máquina</th>
+                    <th scope="col">Cidade</th>
+                    <th scope="col">Dt Upload</th>
+                    <th scope="col">Nome Arquivo</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider border-primary">
+                {% for versao in pacotes %}
+                <tr>
+                    <th scope="row">{{ versao.tipo_sistema }}</th>
+                    <td>{{ versao.versao }}</td>
+                    <td>{{ versao.release }}</td>
+                    <td>{{ versao.nome_maquina }}</td>
+                    <td>{{ versao.cidade }}</td>
+                    <td>{{ versao.dt_upload }}</td>
+                    <td>{{ versao.nome_arquivo }}</td>
+                    <td>
+                        <a href="" title="Detalhar" class="btn btn-success btn-sm"><i class="bi bi-search"></i></a>
+                        <a href="{{ versao.link_download }}" title="Download" class="btn btn-primary btn-sm"><i class="bi bi-download"></i></a>
+                        <a href="" title="Excluir" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Criar Pacote</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="row g-3">
+                    <div class="col-md-6">
+                        <label for="cliente" class="form-label">Cliente</label>
+                        <select id="cliente" class="form-select">
+                        <option></option>
+                        <option>Sete Lagoas</option>
+                        <option>Manhuaçu</option>
+                        <option>Costa Rica</option>
+                        <option>Passos</option>
+                        <option>Valinhos</option>
+                      </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="tipo_sistema_id" class="form-label">Tipo Sistema</label>
+                        <select id="tipo_sistema_id" class="form-select">
+                        <option></option>
+                        <option>MGF6031</option>
+                        <option>MGF7008</option>
+                        <option>PRO6031</option>
+                        <option>PRO7008</option>
+                        <option>REC1001</option>
+                      </select>
+                    </div>
+                    <div class="col-md-12">
+                        <label for="executaveis" class="form-label">Executáveis</label>
+                        <div class="form-check">
+                            <label for="gestcom" class="form-check-label">Gestcom</label>
+                            <input type="checkbox" class="form-check-input" name="gestcom" id="gestcom">
+                        </div>
+                        <div class="form-check">
+                            <label for="pro" class="form-check-label">Pro</label>
+                            <input type="checkbox" class="form-check-input" name="pro" id="pro">
+                        </div>
+                        <div class="form-check">
+                            <label for="contas" class="form-check-label">Contas</label>
+                            <input type="checkbox" class="form-check-input" name="contas" id="contas">
+                        </div>
+                        <div class="form-check">
+                            <label for="proggestcom" class="form-check-label">ProgGestcom</label>
+                            <input type="checkbox" class="form-check-input" name="proggestcom" id="proggestcom">
+                        </div>
+                        <div class="form-check">
+                            <label for="requerimento" class="form-check-label">Requerimento</label>
+                            <input type="checkbox" class="form-check-input" name="requerimento" id="requerimento">
+                        </div>
+                        <div class="form-check">
+                            <label for="divida_ativa" class="form-check-label">Divida Ativa</label>
+                            <input type="checkbox" class="form-check-input" name="divida_ativa" id="divida_ativa">
+                        </div>
+                        <div class="form-check">
+                            <label for="atend_publico" class="form-check-label">Atendimento ao Publico</label>
+                            <input type="checkbox" class="form-check-input" name="atend_publico" id="atend_publico">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <label for="rpt_contas" class="form-label">RPT Contas</label>
+                        <input type="text" class="form-control" id="rpt_contas">
+                    </div>
+                    <div class="col-12">
+                        <label for="cidade" class="form-label">RPT Requerimento</label>
+                        <input type="text" class="form-control" id="rpt_req">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                        <button type="submit" class="btn btn-success">Criar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

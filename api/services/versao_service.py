@@ -17,6 +17,10 @@ def get_versao():
     versao_bd = versao_model.Versao.query.all()
     return versao_bd
 
+def get_pacotes_versao():
+    versao_bd = versao_pacotes_model.VersaoPacotes.query.all()
+    return versao_bd
+
 def get_versao_tipo_sistema(params):
     if params[-4:] == '.zip':
         vPacote = versao_pacotes_model.VersaoPacotes.query.filter_by(nome_arquivo=params).first()

@@ -11,7 +11,8 @@ import os
 class VersaoList(Resource):
     @login_required
     def get(self):
-        response = make_response(render_template("cPanel/pacotes_versoes.html"))
+        pacotes = versao_service.get_pacotes_versao()
+        response = make_response(render_template("cPanel/pacotes_versoes.html", pacotes=pacotes))
         response.mimetype = "text/html"
         return response
 

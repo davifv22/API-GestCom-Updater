@@ -12,7 +12,8 @@ bp = Blueprint('usuarios', __name__)
 class UserList(Resource):
     @login_required
     def get(self):
-        response = make_response(render_template("cPanel/usuarios.html"))
+        usuarios = user_service.get_users()
+        response = make_response(render_template("cPanel/usuarios.html", usuarios=usuarios))
         response.mimetype = "text/html"
         return response
     

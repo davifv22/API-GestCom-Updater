@@ -8,8 +8,11 @@ def set_user(user):
     db.session.commit()
     return user_bd
 
+def get_users():
+    user_bd = user_model.User.query.all()
+    return user_bd
+
 def get_user(user):
-    print(user)
     return user_model.User.query.filter_by(user=user).first()
 
 def get_user_id(id):

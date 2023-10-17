@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
+<html lang="br" data-bs-theme="dark">
 
 <head>
     <meta charset="UTF-8">
@@ -20,7 +20,7 @@
             <div class="dropdown me-1">
                 <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                     <img src="https://github.com/mdo.png" alt="" width="32" class="rounded-circle me-2">
-                    <strong>Davi Viana</strong>
+                    <strong>{{ current_user.nome }}</strong>
                 </a>
                 <ul class="dropdown-menu text-small shadow">
                     <li><a class="dropdown-item" href="#">Meu Perfil</a></li>
@@ -33,9 +33,9 @@
             </div>
         </div>
     </nav>
-    <main class="d-flex flex-nowrap font-monospace">
+    <main class="d-flex font-monospace">
         <div class="d-flex flex-column text-primary-emphasis bg-body-tertiary rounded-3 m-1 shadow-sm" id="sidebar-menu">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav text-nowrap">
                 <li class="p-2 nav-item">
                     <a class="nav-link" href="/"><i class="bi bi-graph-up-arrow"> </i> <span> Dashboard</span></a>
                 </li>

@@ -2,5 +2,95 @@
 <section class="text-bg-dark bg-body-tertiary rounded-3 p-2 m-1 w-100 shadow-sm">
     <h3>Usuários</h3>
     <hr>
+    <button type="button" class="btn btn-success m-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        <i class="bi bi-person-plus-fill"></i> Novo Usuário
+      </button>
+    <br>
+    <div class="table-responsive">
+        <table class="table table-hover text-center">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Administrador</th>
+                    <th scope="col">API Key</th>
+                    <th scope="col">Situação</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider border-primary">
+                {% for user in usuarios %}
+                <tr>
+                    <th scope="row">{{ user.id }}</th>
+                    <td>{{ user.user }}</td>
+                    <td>{{ user.nome }}</td>
+                    <td>{{ user.email }}</td>
+                    {% if user.is_admin == 0 %}
+                    <td>NÃO</td>
+                    {% else %}
+                    <td>SIM</td>
+                    {% endif %}
+                    <td>{{ user.api_key }}</td>
+                    {% if user.situacao == 0 %}
+                    <td>ATIVO</td>
+                    {% else %}
+                    <td>SUSPENSO</td>
+                    {% endif %}
+                    <td>
+                        <a href="" title="Detalhar" class="btn btn-success btn-sm"><i class="bi bi-search"></i></a>
+                        <a href="" title="Editar" class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i></a>
+                        <a href="" title="Excluir" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </section>
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Cadastro Usuário</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="row g-3">
+                    <div class="col-md-12">
+                        <label for="nome" class="form-label">Nome</label>
+                        <input type="text" class="form-control" id="nome">
+                    </div>
+                    <div class="col-12">
+                        <label for="email" class="form-label">E-mail</label>
+                        <input type="email" class="form-control" id="email">
+                    </div>
+                    <div class="col-6">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username">
+                    </div>
+                    <div class="col-6">
+                        <label for="senha" class="form-label">Senha</label>
+                        <input type="password" class="form-control" id="senha">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="administrador" class="form-label">Administrador</label>
+                        <select id="administrador" class="form-select">
+                        <option></option>
+                        <option>Sim</option>
+                        <option>Não</option>
+                      </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                        <button type="submit" class="btn btn-success">Criar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endblock %}
