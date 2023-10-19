@@ -31,6 +31,7 @@
                     <th scope="col">Ações</th>
                 </tr>
             </thead>
+
             <tbody class="table-group-divider border-primary">
                 {% for cliente in clientes %}
                 <tr>
@@ -47,72 +48,132 @@
                     <td>{{ cliente.tipo_sistema_id }}</td>
                     <td>
                         <a href="" title="Detalhar" class="btn btn-success btn-sm"><i class="bi bi-search"></i></a>
-                        <a href="" title="Editar" class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i></a>
-                        <a href="{{url_for('delete', id=cliente.id)}}" title="Excluir" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></a>
+                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#cliente{{ cliente.id }}">
+                            <i class="bi bi-pencil-square"></i>
+                    </button>
                     </td>
                 </tr>
-                {% endfor %}
             </tbody>
+            <!-- MODAL DO CLIENTE -->
+            <div class="modal fade" id="cliente{{ cliente.id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="{{ cliente.id }}Label" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="{{ cliente.id }}Label">Editar Cliente</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="{{url_for('clienteslist')}}" method="post" class="row g-3">
+                                <div class="col-md-12">
+                                    <label for="autarquia" class="form-label">Autarquia</label>
+                                    <input type="text" class="form-control" name="autarquia" id="autarquia" value="{{ cliente.autarquia  }}">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="nome_orgao_resp" class="form-label">Órgão Responsável</label>
+                                    <input type="text" class="form-control" name="nome_orgao_resp" id="nome_orgao_resp" value="{{ cliente.nome_orgao_resp }}">
+                                </div>
+                                <div class="col-12">
+                                    <label for="cidade" class="form-label">Cidade</label>
+                                    <input type="text" class="form-control" name="cidade" id="cidade" value="{{ cliente.cidade }}">
+                                </div>
+                                <div class="col-12">
+                                    <label for="uf" class="form-label">UF</label>
+                                    <input type="text" maxlength="2" class="form-control" name="uf" id="uf" value="{{ cliente.uf }}">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="ident_empresa" class="form-label">Ident. Empresa</label>
+                                    <input type="number" class="form-control" name="ident_empresa" id="ident_empresa" value="{{ cliente.ident_empresa }}">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="situacao" class="form-label">Situação</label>
+                                    <select id="situacao" name="situacao" class="form-select">
+                                        <option value="{{ cliente.situacao }}" disabled selected>{% if cliente.situacao == 0 %} ATIVO {% else %} SUSPENSO {% endif %}</option>
+                                        <option value="0">Ativo</option>
+                                        <option value="1">Suspenso</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="tipo_sistema_id" class="form-label">Tipo Sistema</label>
+                                    <select id="tipo_sistema_id" name="tipo_sistema_id" class="form-select">
+                                        <option value="{{ cliente.tipo_sistema_id }}" disabled selected>{{ cliente.tipo_sistema_id }}</option>
+                                        <option value="MGF6031">MGF6031</option>
+                                        <option value="MGF7008">MGF7008</option>
+                                        <option value="PRO6031">PRO6031</option>
+                                        <option value="PRO7008">PRO7008</option>
+                                        <option value="REC1001">REC1001</option>
+                                    </select>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                                    <button type="submit" class="btn btn-success">Confirmar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
         </table>
     </div>
-</section>
 
 
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">Cadastro Cliente</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form action="{{url_for('clienteslist')}}" method="post" class="row g-3">
-                    <div class="col-md-12">
-                        <label for="autarquia" class="form-label">Autarquia</label>
-                        <input type="text" class="form-control" name="autarquia" id="autarquia">
-                    </div>
-                    <div class="col-md-12">
-                        <label for="nome_orgao_resp" class="form-label">Órgão Responsável</label>
-                        <input type="text" class="form-control" name="nome_orgao_resp" id="nome_orgao_resp">
-                    </div>
-                    <div class="col-6">
-                        <label for="cidade" class="form-label">Cidade</label>
-                        <input type="text" class="form-control" name="cidade" id="cidade">
-                    </div>
-                    <div class="col-2">
-                        <label for="uf" class="form-label">UF</label>
-                        <input type="text" maxlength="2" class="form-control" name="uf" id="uf">
-                    </div>
-                    <div class="col-md-4">
-                        <label for="ident_empresa" class="form-label">Ident. Empresa</label>
-                        <input type="number" class="form-control" name="ident_empresa" id="ident_empresa">
-                    </div>
-                    <div class="col-md-6">
-                        <label for="situacao" class="form-label">Situação</label>
-                        <select id="situacao" name="situacao" class="form-select">
-                        <option></option>
-                        <option value="0">Ativo</option>
-                        <option value="1">Suspenso</option>
-                      </select>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="tipo_sistema_id" class="form-label">Tipo Sistema</label>
-                        <select id="tipo_sistema_id" name="tipo_sistema_id" class="form-select">
-                        <option></option>
-                        <option value="MGF6031">MGF6031</option>
-                        <option value="MGF7008">MGF7008</option>
-                        <option value="PRO6031">PRO6031</option>
-                        <option value="PRO7008">PRO7008</option>
-                        <option value="REC1001">REC1001</option>
-                      </select>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                        <button type="submit" class="btn btn-success">Inserir</button>
-                    </div>
-                </form>
+    <!-- MODAL GERAL -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Cadastro Cliente</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{url_for('clienteslist')}}" method="post" class="row g-3">
+                        <div class="col-md-12">
+                            <label for="autarquia" class="form-label">Autarquia</label>
+                            <input type="text" class="form-control" name="autarquia" id="autarquia">
+                        </div>
+                        <div class="col-md-12">
+                            <label for="nome_orgao_resp" class="form-label">Órgão Responsável</label>
+                            <input type="text" class="form-control" name="nome_orgao_resp" id="nome_orgao_resp">
+                        </div>
+                        <div class="col-6">
+                            <label for="cidade" class="form-label">Cidade</label>
+                            <input type="text" class="form-control" name="cidade" id="cidade">
+                        </div>
+                        <div class="col-2">
+                            <label for="uf" class="form-label">UF</label>
+                            <input type="text" maxlength="2" class="form-control" name="uf" id="uf">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="ident_empresa" class="form-label">Ident. Empresa</label>
+                            <input type="number" class="form-control" name="ident_empresa" id="ident_empresa">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="situacao" class="form-label">Situação</label>
+                            <select id="situacao" name="situacao" class="form-select">
+                    <option></option>
+                    <option value="0">Ativo</option>
+                    <option value="1">Suspenso</option>
+                  </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="tipo_sistema_id" class="form-label">Tipo Sistema</label>
+                            <select id="tipo_sistema_id" name="tipo_sistema_id" class="form-select">
+                    <option></option>
+                    <option value="MGF6031">MGF6031</option>
+                    <option value="MGF7008">MGF7008</option>
+                    <option value="PRO6031">PRO6031</option>
+                    <option value="PRO7008">PRO7008</option>
+                    <option value="REC1001">REC1001</option>
+                  </select>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                            <button type="submit" class="btn btn-success">Inserir</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</section>
 {% endblock %}

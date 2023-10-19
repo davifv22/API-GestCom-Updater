@@ -23,7 +23,7 @@
                     <strong>{{ current_user.nome }}</strong>
                 </a>
                 <ul class="dropdown-menu text-small shadow">
-                    <li><a class="dropdown-item" href="#">Meu Perfil</a></li>
+                    <li><a class="dropdown-item" href="{{url_for('userdetail', user=current_user.user)}}">Meu Perfil</a></li>
                     <li><a class="dropdown-item" href="#">Configurações</a></li>
                     <li>
                         <hr class="dropdown-divider">

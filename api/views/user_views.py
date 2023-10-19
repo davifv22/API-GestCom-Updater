@@ -17,6 +17,7 @@ class UserList(Resource):
         response.mimetype = "text/html"
         return response
     
+    @login_required
     def post(self):
         us = user_schema.UserSchema()
         v = us.validate(request.json)
@@ -30,11 +31,19 @@ class UserList(Resource):
             situacao = True
             is_admin = request.json['is_admin']
             api_key = str(uuid.uuid4())
-            
             novo_user = user.User(user=user_, nome=nome, email=email, senha=senha, situacao=situacao, is_admin=is_admin, api_key=api_key)
             x = user_service.set_user(novo_user)
             
             return make_response(us.jsonify(x), 201)
 
+class UserDetail(Resource):
+    @login_required
+    def get(self, user):
+        usuario = user_service.get_user(user)
+        response = make_response(render_template("cPanel/meu_perfil.html", usuario=usuario))
+        response.mimetype = "text/html"
+        return response
+
 
 api.add_resource(UserList, '/usuarios')
+api.add_resource(UserDetail, '/perfil/<user>')

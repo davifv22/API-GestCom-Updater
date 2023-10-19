@@ -43,8 +43,8 @@
                     <td>{{ versao.nome_arquivo }}</td>
                     <td>
                         <a href="" title="Detalhar" class="btn btn-success btn-sm"><i class="bi bi-search"></i></a>
-                        <a href="{{ versao.link_download }}" title="Download" class="btn btn-primary btn-sm"><i class="bi bi-download"></i></a>
-                        <a href="" title="Excluir" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></a>
+                        <a href="{{ versao.link_download }}" title="Download" class="btn btn-primary btn-sm" onclick="return confirm('Deseja realmente fazer o download da versão: {{ versao.tipo_sistema }}?') "><i class="bi bi-download"></i></a>
+                        <a href="{{url_for('deletepacoteversao', tipo_sistema=versao.tipo_sistema)}}" title="Excluir" class="btn btn-danger btn-sm" onclick="return confirm('Deseja realmente excluir a versão: {{ versao.tipo_sistema }}?') "><i class="bi bi-trash"></i></a>
                     </td>
                 </tr>
                 {% endfor %}

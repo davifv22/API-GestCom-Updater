@@ -1,6 +1,6 @@
 from flask_restful import Resource
 from api.app import api
-from flask import request, make_response, jsonify, send_file, render_template
+from flask import request, make_response, jsonify, send_file, render_template, redirect
 from flask_login import login_required
 from ..schemas import versao_schema, vdownload_schema
 from ..services import versao_service
@@ -65,8 +65,18 @@ class VersaoDownload(Resource):
             versao_folder = 'arquivos/versoes'
         file = os.path.join(versao_folder, versao_bd[1].nome_arquivo)
         return send_file(file, as_attachment=True)
+    
+class DeletePacoteVersao(Resource):
+    @login_required
+    def get(self, tipo_sistema):
+        # tipo_sistema_bd = versao_service.get_versao_tipo_sistema(tipo_sistema)
+        # if tipo_sistema_bd is None:
+        #     return make_response(jsonify("Cliente não foi encontrado!"), 404)
+        # versao_service.delete_versao(tipo_sistema_bd)
+        return redirect('/versoes')
 
 
 api.add_resource(VersaoList, '/versoes')
 api.add_resource(VersaoDetail, '/versao/<params>')
 api.add_resource(VersaoDownload, '/versao/download/<params>')
+api.add_resource(DeletePacoteVersao, '/delete/versao/<tipo_sistema>')

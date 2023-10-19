@@ -1,0 +1,27 @@
+{% extends 'layout_cpanel.html' %} {% block content_cpanel %}
+<section class="text-bg-dark bg-body-tertiary rounded-3 p-2 m-1 w-100 shadow-sm">
+    <h3>Perfil</h3>
+    <hr>
+    <div class="d-flex flex-row align-items-center flex-wrap">
+        <img src="https://github.com/mdo.png" alt="" width="240" class="rounded-circle border shadow m-4">
+        <div class="w-25">
+            <strong>Nome:</strong> {{ current_user.nome }} <br>
+            <strong>Username:</strong> {{ current_user.user }} <br>
+            <strong>E-mail:</strong> {{ current_user.email }} <br>
+            <strong>Nome:</strong> {{ current_user.nome }} <br>
+            <strong>Permissão:</strong> {% if current_user.is_admin == True %} ADMINISTRADOR {% else %} USUÁRIO {% endif %}
+        </div>
+        <div class="d-flex flex-column border p-3 rounded-3 w-25">
+            <h3 class="text-center">Trocar Senha</h3>
+            <hr>
+            <label for="senha_atual" class="form-label">Senha Atual:</label>
+            <input type="password" name="senha_atual" id="senha_atual" class="form-control">
+            <label for="nova_senha" class="form-label">Senha Nova:</label>
+            <input type="password" name="nova_senha" id="nova_senha" class="form-control">
+            <label for="senha_confirmada" class="form-label">Confirmar Senha:</label>
+            <input type="password" name="senha_confirmada" id="senha_confirmada" class="form-control">
+            <input type="submit" value="Confrimar" class="btn btn-success m-5">
+        </div>
+    </div>
+</section>
+{% endblock %}

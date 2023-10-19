@@ -53,6 +53,7 @@ def delete_versao(tipo_sistema):
     db.session.delete(tipo_sistema)
     db.session.commit()
     
+    
 def set_versao_pacotes(vTipo, params):
     versao_base = versao_model.Versao.query.filter_by(tipo_sistema=vTipo).first()
     if versao_base:

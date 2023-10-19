@@ -12,9 +12,6 @@ class Login(Resource):
         user = request.form['user']
         senha = request.form['senha']
         user_bd = user_service.get_user(user)
-        print(user_bd)
-        print(user)
-        print(senha)
         if user_bd and user_bd.ver_senha(senha):
             login_user(user_bd)
             return redirect('/')

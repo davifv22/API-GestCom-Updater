@@ -45,7 +45,7 @@ class ClientesList(Resource):
                                              situacao=situacao,
                                              tipo_sistema_id=tipo_sistema_id)
             x = clientes_service.set_cliente(novo_cliente)
-            return self.get()
+            return redirect('/clientes')
 
 
 class ClienteDetail(Resource):
@@ -88,16 +88,6 @@ class ClienteDetail(Resource):
             cliente_atualizado = clientes_service.get_cliente(id)
             return make_response(cs.jsonify(cliente_atualizado), 200)
 
-class Delete(Resource):
-    @login_required
-    def get(self, id):
-        cliente_bd = clientes_service.get_cliente(id)
-        if cliente_bd is None:
-            return make_response(jsonify("Cliente não foi encontrado!"), 404)
-        clientes_service.delete_cliente(cliente_bd)
-        return redirect('/clientes')
-
 
 api.add_resource(ClientesList, '/clientes')
 api.add_resource(ClienteDetail, '/cliente/<int:id>')
-api.add_resource(Delete, '/cliente/delete/<int:id>')

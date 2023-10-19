@@ -27,13 +27,13 @@
                     <td>{{ user.user }}</td>
                     <td>{{ user.nome }}</td>
                     <td>{{ user.email }}</td>
-                    {% if user.is_admin == 0 %}
-                    <td>NÃO</td>
-                    {% else %}
+                    {% if user.is_admin == True %}
                     <td>SIM</td>
+                    {% else %}
+                    <td>NÃO</td>
                     {% endif %}
                     <td>{{ user.api_key }}</td>
-                    {% if user.situacao == 0 %}
+                    {% if user.situacao == True %}
                     <td>ATIVO</td>
                     {% else %}
                     <td>SUSPENSO</td>
@@ -41,7 +41,6 @@
                     <td>
                         <a href="" title="Detalhar" class="btn btn-success btn-sm"><i class="bi bi-search"></i></a>
                         <a href="" title="Editar" class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i></a>
-                        <a href="" title="Excluir" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></a>
                     </td>
                 </tr>
                 {% endfor %}
